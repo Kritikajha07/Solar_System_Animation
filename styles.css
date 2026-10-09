@@ -2115,3 +2115,18 @@ main,
   font-weight: 400;
   font-family: Arial, sans-serif;
 }
+
+.step.planned .step-check {
+  display: inline-block !important;
+  color: #8ed8bd !important;
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  font-family: Arial, sans-serif !important;
+  font-style: normal !important;
+  line-height: 1 !important;
+}
+
+.step.planned em {
+  display: none !important;
+}
+
