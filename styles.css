@@ -2108,3 +2108,10 @@ main,
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
+
+.step-check {
+  color: #8ed8bd;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: Arial, sans-serif;
+}
