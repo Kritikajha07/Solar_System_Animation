@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070b17" />
+  <meta name="description" content="An interactive solar system simulation and computer graphics project." />
+  <title>ORBITAL — Solar System Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="starfield" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Orbital home"><span class="brand-mark">✳</span><span>ORBITAL<span class="brand-dot">.</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#simulation">Simulation</a><a href="#planets">Planets</a><a href="#science">The science</a><a href="#project">Project</a>
+    </nav>
+    <a class="top-cta" href="#simulation">Explore system <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> AN INTERACTIVE COMPUTER GRAPHICS PROJECT</div>
+        <h1>Our solar system.<br><span>In motion.</span></h1>
+        <p class="hero-lede">Explore the mechanics of our cosmic neighbourhood through a living simulation of planetary revolution and rotation.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#simulation">Launch simulation <span>→</span></a><a class="text-link" href="#science">Discover how it works <span>↘</span></a></div>
+        <div class="hero-meta"><div><strong>08</strong><span>PLANETS</span></div><div><strong>01</strong><span>STAR</span></div><div><strong>∞</strong><span>THINGS TO EXPLORE</span></div></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of planets orbiting a glowing sun">
+        <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div><div class="hero-orbit orbit-c"></div><div class="hero-orbit orbit-d"></div>
+        <div class="hero-sun"><span></span></div><div class="hero-planet hp-mercury"></div><div class="hero-planet hp-earth"><span></span></div><div class="hero-planet hp-jupiter"></div><div class="hero-planet hp-saturn"><i></i></div>
+        <div class="art-label label-sun"><span></span> SOL / G2V STAR</div><div class="art-label label-earth">EARTH · 03</div><div class="art-coordinate">α 12h  /  δ +04°<br>LOCAL SYSTEM VIEW</div>
+      </div>
+      <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="simulation-section section-wrap" id="simulation">
+      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE PLAYGROUND</div><h2>Take the controls.</h2></div><p>Watch the planets travel their paths. Change the pace, inspect a world, and see orbital motion unfold.</p></div>
+      <div class="sim-shell">
+        <div class="sim-topline"><div class="sim-title"><span class="live-dot"></span><span>LIVE SYSTEM VIEW</span><span class="sim-tag">BROWSER PREVIEW</span></div><div class="sim-readout"><span id="statusText">RUNNING</span><span class="readout-divider">/</span><span id="timeReadout">T + 000 days</span></div></div>
+        <div class="sim-layout">
+          <div class="canvas-wrap" id="canvasWrap">
+           <iframe
+    src="solar_system.html"
+    title="C Solar System Animation"
+    style="position:absolute; inset:0; width:100%; height:100%; border:0; background:#080e1b;"
+></iframe>
+
+            <div class="canvas-vignette"></div><div class="canvas-hud hud-tl">HELIOCENTRIC VIEW<br><span>XY PLANE · SCHEMATIC</span></div><div class="canvas-hud hud-tr">SYSTEM 01 <span>● NOMINAL</span></div>
+            <div class="canvas-bottom"><span id="selectedCanvasLabel">SELECTED: EARTH</span><span>DRAG TO PAN · SCROLL TO ZOOM</span></div>
+            <div class="canvas-message" id="canvasMessage">Browser preview active — C simulation integration comes next.</div>
+          </div>
+                  </div>
+        <div class="planet-strip"><div class="strip-label">CHOOSE A PLANET <span>↘</span></div><div class="planet-picker" id="planetPicker"></div></div>
+      </div>
+      <p class="sim-note"><span>ⓘ</span> This is a visual browser preview for the website layout. Distances, sizes, and orbital speeds are simplified for visibility. Your C program will be connected in the next stage.</p>
+    </section>
+
+    <section class="planet-section section-wrap" id="planets">
+      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE NEIGHBOURHOOD</div><h2>Eight worlds. <span>One star.</span></h2></div><p>Select a world in the simulation, or explore the planet cards below to learn what makes each one different.</p></div>
+      
+<div class="orb-planet-grid" id="orbPlanetGrid">
+
+  <button class="orb-planet-card" data-planet="mercury" aria-expanded="false">
+    <span class="orb-planet-number">01 / 08</span>
+    <span class="orb-planet-visual mercury">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">01 — CLOSEST TO THE SUN</span>
+      <span class="orb-planet-name">Mercury</span>
+      <span class="orb-planet-type">TERRESTRIAL PLANET</span>
+      <span class="orb-planet-description">The smallest planet, with extreme temperature changes.</span>
+      <span class="orb-planet-fact">88 Earth days to orbit the Sun.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="venus" aria-expanded="false">
+    <span class="orb-planet-number">02 / 08</span>
+    <span class="orb-planet-visual venus">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">02 — SECOND FROM THE SUN</span>
+      <span class="orb-planet-name">Venus</span>
+      <span class="orb-planet-type">TERRESTRIAL PLANET</span>
+      <span class="orb-planet-description">A thick atmosphere traps heat, making Venus the hottest planet.</span>
+      <span class="orb-planet-fact">One Venus day is longer than its year.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="earth" aria-expanded="false">
+    <span class="orb-planet-number">03 / 08</span>
+    <span class="orb-planet-visual earth">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">03 — OUR HOME</span>
+      <span class="orb-planet-name">Earth</span>
+      <span class="orb-planet-type">TERRESTRIAL PLANET</span>
+      <span class="orb-planet-description">Our home planet, with liquid water on its surface and known life.</span>
+      <span class="orb-planet-fact">About 365.25 days to orbit the Sun.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="mars" aria-expanded="false">
+    <span class="orb-planet-number">04 / 08</span>
+    <span class="orb-planet-visual mars">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">04 — THE RED PLANET</span>
+      <span class="orb-planet-name">Mars</span>
+      <span class="orb-planet-type">TERRESTRIAL PLANET</span>
+      <span class="orb-planet-description">A cold, rocky world with giant volcanoes and ancient river channels.</span>
+      <span class="orb-planet-fact">A Martian year lasts 687 Earth days.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="jupiter" aria-expanded="false">
+    <span class="orb-planet-number">05 / 08</span>
+    <span class="orb-planet-visual jupiter">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">05 — THE LARGEST PLANET</span>
+      <span class="orb-planet-name">Jupiter</span>
+      <span class="orb-planet-type">GAS GIANT</span>
+      <span class="orb-planet-description">A giant planet with powerful storms, including the Great Red Spot.</span>
+      <span class="orb-planet-fact">One Jupiter year is about 11.86 Earth years.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="saturn" aria-expanded="false">
+    <span class="orb-planet-number">06 / 08</span>
+    <span class="orb-planet-visual saturn">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">06 — THE RINGED PLANET</span>
+      <span class="orb-planet-name">Saturn</span>
+      <span class="orb-planet-type">GAS GIANT</span>
+      <span class="orb-planet-description">Famous for its broad rings made mostly of ice and rocky particles.</span>
+      <span class="orb-planet-fact">A Saturn year lasts about 29.5 Earth years.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="uranus" aria-expanded="false">
+    <span class="orb-planet-number">07 / 08</span>
+    <span class="orb-planet-visual uranus">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">07 — THE TILTED WORLD</span>
+      <span class="orb-planet-name">Uranus</span>
+      <span class="orb-planet-type">ICE GIANT</span>
+      <span class="orb-planet-description">An ice giant that rotates almost on its side.</span>
+      <span class="orb-planet-fact">One orbit takes about 84 Earth years.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+  <button class="orb-planet-card" data-planet="neptune" aria-expanded="false">
+    <span class="orb-planet-number">08 / 08</span>
+    <span class="orb-planet-visual neptune">
+      <span class="orbital-ring ring-one"></span>
+      <span class="orbital-ring ring-two"></span>
+      <span class="orb-planet"></span>
+    </span>
+    <span class="orb-planet-info">
+      <span class="orb-planet-order">08 — FARTHEST FROM THE SUN</span>
+      <span class="orb-planet-name">Neptune</span>
+      <span class="orb-planet-type">ICE GIANT</span>
+      <span class="orb-planet-description">A distant blue world with extremely fast winds.</span>
+      <span class="orb-planet-fact">One orbit takes about 165 Earth years.</span>
+    </span>
+    <span class="orb-planet-action">+</span>
+  </button>
+
+</div>
+
+
+    </section>
+
+    <section class="science-section" id="science"><div class="section-wrap science-inner">
+      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> UNDER THE HOOD</div><h2>Graphics meet <span>gravity.</span></h2></div><p>The visual experience is built on mathematical ideas from computer graphics and orbital mechanics.</p></div>
+      <div class="science-grid">
+        <article class="science-card"><div class="science-number">01 / TRANSFORMATIONS</div><div class="science-visual transform-visual"><span class="axis x-axis"></span><span class="axis y-axis"></span><span class="transform-orbit"></span><span class="transform-dot"></span><b>θ</b></div><h3>Position in an orbit</h3><p>Trigonometric functions turn an angle into a 2D position around the Sun.</p><code>x = cx + r · cos(θ)<br>y = cy + r · sin(θ)</code></article>
+        <article class="science-card"><div class="science-number">02 / ANIMATION LOOP</div><div class="science-visual loop-visual"><span>DRAW</span><i>→</i><span>UPDATE</span><i>→</i><span>REPEAT</span><div class="loop-track"></div></div><h3>Frame-by-frame motion</h3><p>Each frame draws the scene, updates angles, and repeats to create continuous motion.</p><code>angle = angle + speed</code></article>
+        <article class="science-card"><div class="science-number">03 / RENDERING</div><div class="science-visual render-visual"><div class="render-sphere"></div><div class="render-ring"></div><span>LIGHT</span></div><h3>Drawing the scene</h3><p>Circles, filled ellipses, colours, and labels represent the Sun, planets, and orbital paths.</p><code>circle() · fillellipse()<br>setcolor() · outtextxy()</code></article>
+      </div>
+      <div class="equation-banner"><div><span class="mini-kicker">THE BIG IDEA</span><h3>A moving world is a changing coordinate.</h3></div><div class="equation">P(θ) = <span>(cx + r cos θ, cy + r sin θ)</span></div></div>
+    </div></section>
+
+    <section class="project-section section-wrap" id="project">
+      <div class="project-copy"><div class="eyebrow"><span class="eyebrow-line"></span> ABOUT THE PROJECT</div><h2>Built to make<br><span>motion visible.</span></h2><p>This project explores how computer graphics can represent a familiar physical system. The original simulation is written in C and uses BGI-style drawing functions to render the Sun, planets, and their movement.</p><div class="tech-pills"><span>C LANGUAGE</span><span>GRAPHICS.H</span><span>MATH.H</span><span>WEBASSEMBLY · PLANNED</span></div></div>
+      <div class="project-steps"><div class="step"><span>01</span><div><h3>Model</h3><p>Store each planet's size, orbit radius, and motion angles.</p></div><b>✓</b></div><div class="step"><span>02</span><div><h3>Calculate</h3><p>Use sine and cosine to compute each planet's screen position.</p></div><b>✓</b></div><div class="step"><span>03</span><div><h3>Render & animate</h3><p>Draw the scene and update the angles on each frame.</p></div><b>✓</b></div><div class="step planned"><span>04</span><div><h3>Bring it to the browser</h3><p>Connect the existing C program through a compatible WebAssembly graphics setup.</p></div><em>IN PROGRESS</em></div></div>
+    </section>
+  </main>
+  <footer class="footer section-wrap"><a class="brand" href="#home"><span class="brand-mark">✳</span><span>ORBITAL<span class="brand-dot">.</span></span></a><span>AN INTERACTIVE COMPUTER GRAPHICS PROJECT</span><a href="#home">BACK TO TOP ↑</a></footer>
+  <script src="app.js"></script>
+</body>
+</html>
